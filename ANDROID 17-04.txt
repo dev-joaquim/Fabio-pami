@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/anotacoes"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/editTexto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFEB3B"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+        app:layout_constraintBottom_toTopOf="@id/fab"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/outline_check_24"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+aula 17-04
+
+
+Competencias
+============
+
+1. Projetar aplicativos, selecionando linguagens de programação e ambientes de desenvolvimento (IDE)
+
+Habilidades
+===========
+1.1 Utilizar ambientes de desenvolvimento de software mobile
+1.2 Construir interface gráfica para aplicativos mobile
+1.3 Utilizar recursos de aparelhos celulares e tablets
+
+Bases Tecnologicas
+==================
+Conceitos de dispositivos moveis e mercado
+- Introdução ao desenvolvimento mobile
+- Dispositivos moveis e o mercado
+- Definição de dispositivos moveis
+- Arquitetura de sistemas
+- Principais plataformas
+- Desenvolvimento Cross-Platform
+- Desenvolvimento em blocos
+- Ciclo de vida de um app
+
+Desenvolvimento de layout de aplicativo mobile
+
+Criação e configuração d componentes básicos
+- Layouts
+- Texto
+- Botoes
+- Imagens
+- Listas
+- Views
+
+Navegação de telas
+
+Manipulacao de recursos do dispositivo
+- galerias		- imagens
+- contatos		- acelerômetro
+- geolocalização	- giroscópio
+
+Servicos
+
+Notificações
+
+Manipulação de banco de dados no dispositivo
+
+endereço dos arquivos de apoio:
+publica/Fabio Claret/2026/modular/PAMI
+
+==================================================================
+Um aplicativo é formado por uma tela e um código que pode ser java ou kotlin.
+O java (MainActivity.java) usa um padrão chamado CamelCase.
+Classes		- todo nome de classe começa com letra maiuscula
+Variáveis	- todo nome de variáveis começa com letra minúscula
+Métodos		- igual ao padrão de variáveis, mas tem parênteses no final ( )
+Constantes	- todas as letras em maiúsculo. Se o nome for composto, separar com um underline.
+Quando o nome da classe, variável ou método for composto, a primeira letra da palavra seguinte será maiúscula;
+Exemplos:
+classes: MainActivity, AppCompatActivity, MediaPlaye
+variáveis: nomeUsuario, editNome, editSenha
+métodos: cadastrarUsuario(), checkNome();
+constantes: LENG_LONG, LENG_SHORT, MATH
+Nenhum nome pode conter espaço, acentuação, cecidilha ou começar com numero ou caracter especial
+
+Para os arquivos de tela, usamos o padrão snake_case: todas minúsculas, e quando for composta, usar um underline 
+
+Projeto 1:
+
+aula 20/02
+Para criar um app temos que primeiro desenhar a tela (layout)
+E para usar imagens em nosso projeto, temos que copiar essas imagens para a pasta drawable
+Existem três tipos de medida para os elementos
+wrap_content	o tamanho da caixa se ajusta ao tamanho do conteúdo
+match_parent	o tamanho da caixa ocupa todo o espaço do dispositivo
+fixed		o tamanho eh definido pelo programador em dp
+Tamanho de margem ou de elemento eh dado por dp
+Tamanho de letras eh dado por sp
+
+glossário:
+width	tamanho
+height	altura
+parente	pai
+findViewById() procura um elemento pelo seu id no layout
+Intent	intenção
+listener = escutar
+
+aula 27/02
+========
+Passos para a criacao de um APP
+
+1° Desenhar a tela de layout
+2° Identificar os elementos com os quais o usuário vai interagir
+3° Declarar as classes desses elementos no Java/Kotlin
+4° 'Linkar' o layout com a parte lógica (findViewById)
+5° Desenvolver a parte lógica
+
+Todo aplicativo é composto de uma tela e uma lógica. Essa lógica está dentro de uma classe (pode ser Java ou Kotlin).
+
+O conjunto da tela com o layout é chamado de Activity. 
+Para inserir imagens no nosso app, precisamos copiar as imagens para a pasta drawable. 
+E para copiar musicas, temos que criar um diretorio do tipo raw.
+
+14/03 Constraint Layout
+==================
+No constraint layout precisamos pelo menos de duas ligações para manter a view na posição, vertical e horizontal.
+Podemos ligar o elemento ao container pai ou a outro elemento. Para isso os elementos tem que estar identificados.
+A boa pratica diz que o primeiro elemento é ligado na parte de cima com a parte de cima do parente (pai)
+Se quiser centralizar, ligamos também a parte direita do elemento com a parte direita o pai e a parte esquerda do elemento com a parte esquerda do pai.
+Os próximos elementos ficarão ligados na parte de cima, com a parte de baixo do elemento acima.
+O android facilita colocando atalhos de digitação:
+
+digitamos	comando			para
+=========	======================	=============================================================
+toptotop		toptoTop		ligar a parte de cima do elemento a parte de cima do elemento
+toptobott		starttoBottom	ligar a parte de cima do elemento a parte de baixo 
+startto		starttoEnd	a parte esquerda com a parte direita 
+endto		endtoEnd		a parte direita com a parte direita (raro usar)
+startto		starttoStart	esquerda com esquerda
+
+Quando usamos a medida wrap_content, na largura(width) e ligamos a parte esquerda com o pai e a parte direita também com o pai, o elemento fica centralizado na tela.
+Se usarmos a medida wrap_content na altura (height) e ligarmos a parte de cima com a parte de cima do pai, e a parte de baixo com a parte de baixo do pai, o elemento fica centralizado vertical e horizontalmente.
+Se ao invés de centralizar quisermos "esticar" o elemento para ocupar todo espaço do celular, basta mudar a largura para match_parent e ligar a esquerda e a direita. Com match_parent ele estica ao invés de centralizar
+Para desenhar uma tela normalmente usamos na maior parte do tempo três elementos:
+<TextView/>	para escrever títulos ou labels
+<EditText/>	para campos de entrada de dados (semelhante ao input do html)
+<Buttom/>	para inserir botoes
+wrap_content ajusta o tamanho da caixa com o tamanho do conteudo tanto na largura quanto na altura	
+
+aula 20-03
+
+========
+imagens do app: https://drive.google.com/drive/folders/1fe85efs6kmsmKC6DsM8pNsbS9-R3yH4K?usp=sharing
+power point aula: https://docs.google.com/presentation/d/1u27iefleRHsWzxJUNrcIfys69tLaNKeH/edit?usp=sharing&ouid=101646815108080068517&rtpof=true&sd=true
+
+
+
+
+App delivery
+login
+package com.matheus.modularappdelivery;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class LoginActivity extends AppCompatActivity {
+EditText email, senha;
+TextView erro, criarConta;
+Button entrar;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_login);
+
+        initComponents();
+        entrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Cliquei no batao entar",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+
+    private void initComponents() {
+        email = findViewById(R.id.edt_email);
+        senha = findViewById(R.id.edt_senha);
+        erro = findViewById(R.id.mensagem_erro);
+        criarConta = findViewById(R.id.criar_conta);
+        entrar = findViewById(R.id.btn_entrar);
+    }
+}
+
+Main
+
+package com.matheus.modularappdelivery;
+
+import android.os.Bundle;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+}
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".LoginActivity">
+
+
+        <ImageView android:id="@+id/logo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/logo" />
+
+
+        <EditText android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/borda"
+            android:hint="Informe o E-mail"
+            android:inputType="textEmailAddress"
+            android:padding="15dp" />
+
+
+        <EditText android:id="@+id/edt_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/borda"
+            android:hint="Informe a Senha"
+            android:inputType="numberPassword"
+            android:padding="15dp" />
+
+
+        <TextView android:id="@+id/mensagem_erro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/red"
+            android:textSize="16sp" />
+
+
+        <Button android:id="@+id/btn_entrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/dar_red"
+            android:padding="15dp"
+            android:text="Entrar"
+            android:textSize="20sp"
+            app:cornerRadius="15dp" />
+
+
+        <ProgressBar android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:indeterminateTint="@color/red" />
+
+
+        <TextView android:id="@+id/criar_conta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Crie sua conta clicando aqui"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
+
+===============================================
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tela de Cadastro"
+        android:textSize="32sp"
+        android:textColor="@color/dar_red"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="100dp" />
+
+    <EditText android:id="@+id/edt_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borda"
+        android:padding="15dp"
+        android:layout_marginTop="100dp"
+        android:hint="Informe o seu Nome:" />
+
+    <EditText android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borda"
+        android:padding="15dp"
+        android:layout_marginTop="50dp"
+        android:hint="Informe o seu Email:"/>
+
+    <EditText android:id="@+id/edt_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borda"
+        android:padding="15dp"
+        android:layout_marginTop="50dp"
+        android:hint="Informe a Senha:"/>
+
+    <Button android:id="@+id/bnt_cadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_marginTop="100dp"
+        android:text="CADASTRAR"
+        android:backgroundTint="@color/dar_red"
+        app:cornerRadius="12dp"/>
+
+
+</LinearLayout>
+===================================================
+17-04 - novo layout Anotacoes
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/anotacoes" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="text"
+        android:padding="15dp"
+        android:hint="Digite aqui suas anotações"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:background="#FFEB3B"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/outline_check_24" />
+</androidx.constraintlayout.widget.ConstraintLayout>
